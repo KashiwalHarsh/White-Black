@@ -76,3 +76,33 @@ binary_to_encrypted_from_file(binary_file_path, output_file_path)
 encrypted_file_path = 'reconstructed_encrypted.txt'
 output_file_path = 'data.txt'
 decrypt_file(encrypted_file_path, key, output_file_path)
+
+
+# Flow
+# Text File -> Encrypt with AES -> Convert It into Binary -> Binary to Image
+
+# Image to Binary -> Binary to Encrypted Text -> Decrypt with AES -> Text File
+
+#Message to Self
+
+#use python encode.py to run the encdoing process
+#use python decode.py to run the decdoing process
+
+#To Do
+
+#Easy Apprach 1
+# Build a UI on top of this exact application
+# Encoding Phase
+# Takes a Text file as input along with a key to encrypt the data
+# Outputs an Image in png format which cointains the data hidden in it
+# Decoding Phase 
+# Take the image in png format as input along with the same key to decrypt
+# Outputs the .txt file which contains the orignal data
+
+#Approach 2
+# Create multiple pictures of same long data by modifying the code to output to give multiple pictures
+# Create a video out of those images 
+# Upload it to Youtbe in full HD
+
+# Download the Video
+# Decode it Frame by Frame to get the data encoded in the video
