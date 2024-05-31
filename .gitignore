@@ -9,10 +9,10 @@ htmlcov/
 .tox/
 docs/_build/
 
+file.txt
 binary_image.png
 binary-rec.txt
 binary-rep.txt
 data.txt
 encrypted.txt
-file.txt
 reconstructed_encrypted.txt
