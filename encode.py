@@ -4,6 +4,14 @@ from Crypto.Random import get_random_bytes
 import os
 
 
+OUTPUT_FOLDER = "outputs"
+if not os.path.exists(OUTPUT_FOLDER):
+    os.makedirs(OUTPUT_FOLDER)
+
+INPUT_FOLDER = 'inputs'
+if not os.path.exists(INPUT_FOLDER):
+    os.makedirs(INPUT_FOLDER)
+
 #Encrypt text to AES cypher
 def encrypt_file(file_path, key):
     with open(file_path, 'rb') as file:
@@ -18,8 +26,9 @@ def encrypt_file(file_path, key):
     # Encrypt the data
     encrypted_data = cipher.encrypt(pad(data, AES.block_size))
 
-    # Write the encrypted data along with the initialization vector to a new file
-    with open('encrypted.txt', 'wb') as encrypted_file:
+    # Write the encrypted data along with the initialization vector to a new file in the middleware folder
+    file_path = os.path.join(OUTPUT_FOLDER, 'encrypted.txt')
+    with open(file_path, 'wb') as encrypted_file:
         encrypted_file.write(iv + encrypted_data)
 
     print("Encryption successful : 'encrypted.txt'.")
@@ -37,7 +46,8 @@ def encrypted_to_binary(file_path_encrypted):
     binary_data = ''.join(format(byte, '08b') for byte in encrypted_data)
 
     # Write the binary representation to a new file
-    with open('binary-rep.txt', 'w') as binary_file:
+    file_path = os.path.join(OUTPUT_FOLDER, 'binary-rep.txt')
+    with open(file_path, 'w') as binary_file:
         binary_file.write(binary_data)
 
     print("Binary Conversion succesful : 'binary-rep.txt'.")
@@ -60,24 +70,26 @@ def binary_to_image(binary_data, output_file):
     
     print("Image Formation succesful : 'binary_image.png'.")
     # Save the image to a file
-    img.save(output_file)
+    output_path = os.path.join(OUTPUT_FOLDER, output_file)
+    img.save(output_path)
 
 
 #---------------------------------------------------------------------------
 
 
 # Encryption
-file_path = 'file.txt'
+input_file_path = file_path_encrypted = file_path = os.path.join(INPUT_FOLDER, 'input.txt')
 key = b'ThisIsASecretKey'
-encrypt_file(file_path, key)
+encrypt_file(input_file_path, key)
 
 # Binary Rep of Encrypted text
-file_path_encrypted = 'encrypted.txt'
+file_path_encrypted = file_path = os.path.join(OUTPUT_FOLDER, 'encrypted.txt')
 encrypted_to_binary(file_path_encrypted)
 
 # Conversion of Binary into Image
 # Read binary data from file
-with open("binary-rep.txt", "r") as file:
+file_path = os.path.join(OUTPUT_FOLDER, 'binary-rep.txt')
+with open(file_path, "r") as file:
     binary_data = file.read().strip()
 
 output_file = "binary_image.png"

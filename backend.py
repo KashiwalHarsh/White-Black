@@ -1,12 +1,15 @@
 from flask import Flask, render_template, request, jsonify
 import os
+import encode
+import decode
+
 
 app=Flask(__name__)
 
 # Ensure the content directory exists
-CONTENT_FOLDER = 'content'
-if not os.path.exists(CONTENT_FOLDER):
-    os.makedirs(CONTENT_FOLDER)
+INPUT_FOLDER = 'inputs'
+if not os.path.exists(INPUT_FOLDER):
+    os.makedirs(INPUT_FOLDER)
 
 @app.route('/')
 def index():
@@ -35,7 +38,7 @@ def upload_file():
 
         # Save the file to the content directory
         filename = file.filename
-        filepath = os.path.join(CONTENT_FOLDER, filename)
+        filepath = os.path.join(INPUT_FOLDER, filename)
         file.save(filepath)
 
         content = file.read().decode('utf-8')

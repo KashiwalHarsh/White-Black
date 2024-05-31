@@ -9,7 +9,8 @@ htmlcov/
 .tox/
 docs/_build/
 
-content
+inputs
+outputs
 file.txt
 binary_image.png
 binary-rec.txt
