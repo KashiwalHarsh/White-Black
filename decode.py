@@ -3,6 +3,14 @@ from PIL import Image
 from Crypto.Random import get_random_bytes
 import os
 
+OUTPUT_FOLDER = "output-tracer"
+if not os.path.exists(OUTPUT_FOLDER):
+    os.makedirs(OUTPUT_FOLDER)
+
+CONTENT_FOLDER = 'content'
+if not os.path.exists(CONTENT_FOLDER):
+    os.makedirs(CONTENT_FOLDER)
+
 # Conversion of Image to Binary
 def image_to_binary(input_file, output_file):
     # Open the image file
@@ -62,19 +70,21 @@ def unpad(s):
 key = b'ThisIsASecretKey'
 
 # Conversion of Image into Binary
-input_file = "binary_image.png"
-output_file = "binary-rec.txt"
+input_file = os.path.join(OUTPUT_FOLDER, 'binary_image.png')
+output_file = os.path.join(OUTPUT_FOLDER, 'binary-rec.txt')
 
 image_to_binary(input_file, output_file)
 
 #Reconstuction of Encrypted file
-binary_file_path = 'binary-rep.txt'  # Path to the file containing binary data
-output_file_path = 'reconstructed_encrypted.txt'  # Output file path
+
+binary_file_path = os.path.join(OUTPUT_FOLDER, 'binary-rep.txt')
+output_file_path = os.path.join(OUTPUT_FOLDER, 'reconstructed_encrypted.txt')
+
 binary_to_encrypted_from_file(binary_file_path, output_file_path)
 
 #Data Extraction form the Reconstructed Encrpyted file
-encrypted_file_path = 'reconstructed_encrypted.txt'
-output_file_path = 'data.txt'
+encrypted_file_path = os.path.join(OUTPUT_FOLDER, 'reconstructed_encrypted.txt')
+output_file_path = os.path.join(CONTENT_FOLDER, 'output.txt')
 decrypt_file(encrypted_file_path, key, output_file_path)
 
 

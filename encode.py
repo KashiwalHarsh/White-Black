@@ -4,13 +4,13 @@ from Crypto.Random import get_random_bytes
 import os
 
 
-OUTPUT_FOLDER = "outputs"
+OUTPUT_FOLDER = "output-tracer"
 if not os.path.exists(OUTPUT_FOLDER):
     os.makedirs(OUTPUT_FOLDER)
 
-INPUT_FOLDER = 'inputs'
-if not os.path.exists(INPUT_FOLDER):
-    os.makedirs(INPUT_FOLDER)
+CONTENT_FOLDER = 'content'
+if not os.path.exists(CONTENT_FOLDER):
+    os.makedirs(CONTENT_FOLDER)
 
 #Encrypt text to AES cypher
 def encrypt_file(file_path, key):
@@ -70,7 +70,7 @@ def binary_to_image(binary_data, output_file):
     
     print("Image Formation succesful : 'binary_image.png'.")
     # Save the image to a file
-    output_path = os.path.join(OUTPUT_FOLDER, output_file)
+    output_path = os.path.join(CONTENT_FOLDER, output_file)
     img.save(output_path)
 
 
@@ -78,12 +78,12 @@ def binary_to_image(binary_data, output_file):
 
 
 # Encryption
-input_file_path = file_path_encrypted = file_path = os.path.join(INPUT_FOLDER, 'input.txt')
+input_file_path = os.path.join(CONTENT_FOLDER, 'input.txt')
 key = b'ThisIsASecretKey'
 encrypt_file(input_file_path, key)
 
 # Binary Rep of Encrypted text
-file_path_encrypted = file_path = os.path.join(OUTPUT_FOLDER, 'encrypted.txt')
+file_path_encrypted = os.path.join(OUTPUT_FOLDER, 'encrypted.txt')
 encrypted_to_binary(file_path_encrypted)
 
 # Conversion of Binary into Image
