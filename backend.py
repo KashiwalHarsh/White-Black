@@ -7,11 +7,11 @@ def index():
     return render_template("index.html")
 
 @app.route('/encode',methods=['GET'])
-def application():
+def encode():
     return render_template("encode.html")
 
 @app.route('/decode',methods=['GET'])
-def about():
+def decode():
     return render_template("decode.html")
 
 @app.route('/about',methods=['GET'])
@@ -27,4 +27,4 @@ def about():
 #         return render_template('summary.html',summary=summary,originaltext=originaltext,len_o=len_o,len_s=len_s,score=score)
 
 if __name__ == '__main__':
-    app.run(debug=False,port=8001)
+    app.run(debug=True,port=8001)

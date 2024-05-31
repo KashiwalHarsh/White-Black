@@ -13,10 +13,8 @@ html {
 
 body {
     background-color: #fff;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    height: 100vh;
+    background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
 }
 
 main {
@@ -55,5 +53,83 @@ header {
 }
 
 .green-border {
-    border-color: green;
+    border-color: #173987;
+}
+
+.button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    background-color: #173987;
+    color: white;
+}
+
+.father {
+    display: flex;
+    height: 95vh;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pass {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.btn {
+    margin: 10px 0;
+}
+
+.navbar {
+    background-color: #ededed;
+    color: #484848;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    text-decoration: none;
+    color: #484848;
+    transition: color 0.3s ease;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.nav-links .form {
+    margin-right: 15px;
+    display: inline;
+}
+
+.nav-links button {
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    background-color: #484848;
+    padding: 7px 10px;
+    color: white;
+    border: none;
+    border-radius: 7px;
+}
+
+.nav-links button:hover {
+    background-color: #173987;
 }

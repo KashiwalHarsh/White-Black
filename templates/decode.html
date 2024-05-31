@@ -5,17 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decode</title>
+    <link rel="stylesheet" href="static/main.css">
+    <script src="static/main.js" defer></script>
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="title">Decode</div>
+            <div>
+                <ul class="nav-links">
+                    <form action="/encode" method="get" class="form">
+                        <button type="submit">Encode</button>
+                    </form>
+
+                    <form action="/" method="get">
+                        <button type="submit">Home</button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <section class="father">
-        <section>
+        <section class="droparea">
+            <i class="far fa-file"></i>
+            <p>Drop your Encrypted .png files here!</p>
+        </section>
+        <section class="pass">
             <p>Enter your password:</p>
             <input type="text">
         </section>
 
-        <section>
-            <button>Download Decrypted Data</button>
+        <section class="btn">
+            <button class="button is-primary" type="submit">Download Decrypted Data</button>
         </section>
     </section>
 </body>

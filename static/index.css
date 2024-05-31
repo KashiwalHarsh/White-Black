@@ -59,7 +59,7 @@ body {
 }
 
 .nav-links button:hover {
-    background-color: #178733;
+    background-color: #173987;
 }
 
 /* Responsive design for mobile devices */
@@ -103,7 +103,7 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    background-color: #178733;
+    background-color: #173987;
     color: white;
 }
 
