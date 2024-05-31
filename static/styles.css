@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+}
+
+
+.navbar {
+    background-color: #ededed;
+    color: #484848;
+    font-family: Arial, sans-serif;
+}
+
+.cont {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    text-decoration: none;
+    color: #484848;
+    transition: color 0.3s ease;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.nav-links .form {
+    margin-right: 15px;
+    display: inline;
+}
+
+.nav-links button {
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    background-color: #484848;
+    padding: 7px 10px;
+    color: white;
+    border: none;
+    border-radius: 7px;
+}
+
+.nav-links button:hover {
+    background-color: #178733;
+}
+
+/* Responsive design for mobile devices */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links li {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+}
+
+.section {
+    margin-top: 50px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.subtitle {
+    margin-bottom: 1rem;
+    font-size: 18px;
+    color: #868686;
+}
+
+.columns {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px 0px 20px 0px;
+    /* margin-top: 50px; */
+}
+
+.column {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 15px;
+}
+
+.split-line {
+    border-left: 1px solid #d6d6d6;
+}
+
+.box {
+    background-color: #fff;
+    padding: 15px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.textarea {
+    min-height: 200px;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+    outline: none;
+}
+
+.button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    background-color: #178733;
+    color: white;
+}
+
+.count {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+.input-text,
+.output-text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    color: grey;
+}

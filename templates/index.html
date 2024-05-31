@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="static/index.css">
+    <script src="static/main.js" defer></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="title">No Guesses</div>
+            <div>
+                <ul class="nav-links">
+                    <form action="/encode" method="get" class="form">
+                        <button type="submit">Encode</button>
+                    </form>
+                    <form action="/decode" method="get" class="form">
+                        <button type="submit">Decodes</button>
+                    </form>
+                    <form action="https://github.com/KashiwalHarsh/Text-Summarizer" target="_blank" method="get"
+                        class="form">
+                        <button type="submit">Contribute</button>
+                    </form>
+                    <form action="/about" method="get">
+                        <button type="submit">About</button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="content">
+        <h2 class="content-heading">Welcome to the Steganography Tool</h2>
+        <p class="content-sub">Encrypt your Secrets with the power of Steganography powered by AES</p>
+        <form action="/encode" method="get">
+            <button id="summarizeBtn" class="button is-primary" type="submit">Get Started</button>
+        </form>
+    </section>
+</body>
+
+</html>
