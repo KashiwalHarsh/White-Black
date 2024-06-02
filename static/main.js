@@ -37,12 +37,11 @@ const handleDrop = (e) => {
 
     // Handle only the first file (assuming single file upload)
     const file = fileArray[0];
-    if (file && file.type === "text/plain") {
+    if (file && (file.type === "text/plain" || file.type === "image/png")) {
         uploadFile(file);
     } else {
-        alert("Please drop a valid .txt file.");
+        alert("Please drop a valid .txt or .png file.");
     }
-
 }
 
 const uploadFile = (file) => {
