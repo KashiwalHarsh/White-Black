@@ -3,7 +3,10 @@ const initApp = () => {
 
     const active = () => droparea.classList.add("green-border");
 
-    const inactive = () => droparea.classList.remove("green-border");
+    const inactive = () => {
+        droparea.classList.remove("green-border");
+        droparea.classList.add("final");
+    }
 
     const prevents = (e) => e.preventDefault();
 

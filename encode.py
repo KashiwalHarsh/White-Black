@@ -16,7 +16,6 @@ if not os.path.exists(CONTENT_FOLDER):
 def encrypt_file(file_path, key):
     with open(file_path, 'rb') as file:
         data = file.read()
-
     # Generate a random initialization vector
     iv = get_random_bytes(AES.block_size)
 
@@ -76,22 +75,29 @@ def binary_to_image(binary_data, output_file):
 
 #---------------------------------------------------------------------------
 
+def main_encode():
+    # Encryption
+    input_file_path = os.path.join(CONTENT_FOLDER, 'input.txt')
+    input_key_path = os.path.join(CONTENT_FOLDER, 'input_key.txt')
+    # key = b'ThisIsASecretKey'
+    with open(input_key_path, 'r') as file:
+        key = file.read()
 
-# Encryption
-input_file_path = os.path.join(CONTENT_FOLDER, 'input.txt')
-key = b'ThisIsASecretKey'
-encrypt_file(input_file_path, key)
+    key = key.encode('utf-8')
+    # print(key)
 
-# Binary Rep of Encrypted text
-file_path_encrypted = os.path.join(OUTPUT_FOLDER, 'encrypted.txt')
-encrypted_to_binary(file_path_encrypted)
+    encrypt_file(input_file_path, key)
 
-# Conversion of Binary into Image
-# Read binary data from file
-file_path = os.path.join(OUTPUT_FOLDER, 'binary-rep.txt')
-with open(file_path, "r") as file:
-    binary_data = file.read().strip()
+    # Binary Rep of Encrypted text
+    file_path_encrypted = os.path.join(OUTPUT_FOLDER, 'encrypted.txt')
+    encrypted_to_binary(file_path_encrypted)
 
-output_file = "binary_image.png"
+    # Conversion of Binary into Image
+    # Read binary data from file
+    file_path = os.path.join(OUTPUT_FOLDER, 'binary-rep.txt')
+    with open(file_path, "r") as file:
+        binary_data = file.read().strip()
 
-binary_to_image(binary_data, output_file)
+    output_file = "binary_image.png"
+
+    binary_to_image(binary_data, output_file)

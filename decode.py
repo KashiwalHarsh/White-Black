@@ -67,25 +67,33 @@ def unpad(s):
     return s[:-ord(s[len(s)-1:])]
 
 #-----------------------------------------------------------
-key = b'ThisIsASecretKey'
 
-# Conversion of Image into Binary
-input_file = os.path.join(OUTPUT_FOLDER, 'binary_image.png')
-output_file = os.path.join(OUTPUT_FOLDER, 'binary-rec.txt')
+def main_decode():
 
-image_to_binary(input_file, output_file)
+    input_key_path = os.path.join(CONTENT_FOLDER, 'output_key.txt')
+    # key = b'ThisIsASecretKey'
+    with open(input_key_path, 'r') as file:
+        key = file.read()
 
-#Reconstuction of Encrypted file
+    key = key.encode('utf-8')
 
-binary_file_path = os.path.join(OUTPUT_FOLDER, 'binary-rep.txt')
-output_file_path = os.path.join(OUTPUT_FOLDER, 'reconstructed_encrypted.txt')
+    # Conversion of Image into Binary
+    input_file = os.path.join(CONTENT_FOLDER, 'binary_image.png')
+    output_file = os.path.join(OUTPUT_FOLDER, 'binary-rec.txt')
 
-binary_to_encrypted_from_file(binary_file_path, output_file_path)
+    image_to_binary(input_file, output_file)
 
-#Data Extraction form the Reconstructed Encrpyted file
-encrypted_file_path = os.path.join(OUTPUT_FOLDER, 'reconstructed_encrypted.txt')
-output_file_path = os.path.join(CONTENT_FOLDER, 'output.txt')
-decrypt_file(encrypted_file_path, key, output_file_path)
+    #Reconstuction of Encrypted file
+
+    binary_file_path = os.path.join(OUTPUT_FOLDER, 'binary-rep.txt')
+    output_file_path = os.path.join(OUTPUT_FOLDER, 'reconstructed_encrypted.txt')
+
+    binary_to_encrypted_from_file(binary_file_path, output_file_path)
+
+    #Data Extraction form the Reconstructed Encrpyted file
+    encrypted_file_path = os.path.join(OUTPUT_FOLDER, 'reconstructed_encrypted.txt')
+    output_file_path = os.path.join(CONTENT_FOLDER, 'output.txt')
+    decrypt_file(encrypted_file_path, key, output_file_path)
 
 
 # Flow

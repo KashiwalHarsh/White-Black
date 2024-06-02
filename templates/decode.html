@@ -32,14 +32,42 @@
             <p>Drop your Encrypted .png files here!</p>
         </section>
         <section class="pass">
-            <p>Enter your password:</p>
-            <input type="text">
+            <form id="keyForm">
+                <label for="key">Enter your password:</label>
+                <input type="text" maxlength="16" minlength="16" id="key" name="key" required>
+                <button class="submit" type="submit">Submit</button>
+            </form>
         </section>
 
         <section class="btn">
-            <button class="button is-primary" type="submit">Download Decrypted Data</button>
+            <form action="/performDecryption" method="get" class="form">
+                <button type="submit" class="button is-primary">Decode and Download Text</button>
+            </form>
         </section>
     </section>
 </body>
+<script>
+    document.getElementById('keyForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const key = document.getElementById('key').value;
+
+        fetch('/output-key', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ key: key })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // alert(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>
 
 </html>

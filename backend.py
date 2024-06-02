@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify,send_file
 import os
-import encode
-import decode
-
+from encode import main_encode
+from decode import main_decode
 
 app=Flask(__name__)
 
@@ -47,13 +46,58 @@ def upload_file():
         return jsonify({"message": "File successfully uploaded", "content": content}), 200
     return jsonify({"error": "File upload failed"}), 500
 
-# @app.route('/analyze', methods=['GET','POST'])
-# def new():
-#     if request.method=='POST':
-#         rawtext=request.form['rawtext']
-#         summary,originaltext,len_o,len_s,score=summarizer(rawtext)
+@app.route('/input-key', methods=['POST'])
+def input_key():
+    data = request.json
+    key = data.get('key')
 
-#         return render_template('summary.html',summary=summary,originaltext=originaltext,len_o=len_o,len_s=len_s,score=score)
+    if not key:
+        return jsonify({"error": "Key is missing"}), 400
+    
+    # Here you can call your Python script with the key
+    # For demonstration, we're just returning the key
+    # Replace this with your actual script call
+    newkey = key.encode('utf-8')[:16].ljust(16, b'\0')
+
+    input_key = os.path.join(CONTENT_FOLDER, 'input_key.txt')
+    with open(input_key, 'w') as key_file:
+        key_file.write(newkey.decode('utf-8'))
+
+    return jsonify({"message": "Input Key received", "key": key})
+
+
+@app.route('/output-key', methods=['POST'])
+def output_key():
+    data = request.json
+    key = data.get('key')
+
+    if not key:
+        return jsonify({"error": "Key is missing"}), 400
+    
+    newkey = key.encode('utf-8')[:16].ljust(16, b'\0')
+
+    input_key = os.path.join(CONTENT_FOLDER, 'output_key.txt')
+    with open(input_key, 'w') as key_file:
+        key_file.write(newkey.decode('utf-8'))
+
+    return jsonify({"message": "Output Key received", "key": key})
+
+
+@app.route('/performEncryption', methods=['GET','POST'])
+def perform_encryption():
+
+    main_encode()
+    image_path = os.path.join(CONTENT_FOLDER, 'binary_image.png')
+
+    return send_file(image_path, as_attachment=True)
+
+@app.route('/performDecryption', methods=['GET','POST'])
+def perform_decryption():
+
+    main_decode()
+    text_path = os.path.join(CONTENT_FOLDER, 'output.txt')
+
+    return send_file(text_path, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True,port=8001)
